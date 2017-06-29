@@ -69,6 +69,13 @@ gameState.create = function(){
 	this.bgmusic.play();
 
 	this.jumpse = new Kiwi.Sound.Audio(this.game, 'jump-se', 1, false);
+
+	//HUD Time
+	this.GameTime = new Kiwi.HUD.Widget.Time( this.game, '', 512, 25 );
+    this.GameTime.style.color = 'white';
+	this.GameTime.style.fontSize = '30px';
+    this.game.huds.defaultHUD.addWidget( this.GameTime );
+    this.GameTime.start()
 }
 
 //update คือ ฟังก์ชันสำหรับ Listening ตัวเกม เวลามีการเปลี่ยนแปลงไดๆ
@@ -119,11 +126,11 @@ gameState.updateCharacterMovement = function () {
 	//Move the player/character
 	if ( this.leftPressed ) {
 		this.character.scaleX = -1;
-		this.character.physics.velocity.x = -48;
+		this.character.physics.velocity.x = -55;
 
 	} else if ( this.rightPressed ) {
 		this.character.scaleX = 1;
-		this.character.physics.velocity.x = 48;
+		this.character.physics.velocity.x = 55;
 
 	} else {
 		this.character.physics.velocity.x = 0;
