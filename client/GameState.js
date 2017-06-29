@@ -15,6 +15,9 @@ gameState.preload = function(){
 	//โหลด Character
 	this.addSpriteSheet( "character", 'client/resource/character/player1-70x70.png', 70, 70 );
 
+	//เพิ่ม Audio
+	this.addAudio('sci-fi-theme-8-bit', 'client/resource/audio/sci-fi/sci-fi-theme-8-bit.mp3');
+	this.addAudio('jump-se', 'client/resource/audio/sound-effects/w-lasergun.mp3');
 }
 
 //create คือ การสร้างตัวเกมเริ่มต้น
@@ -60,6 +63,12 @@ gameState.create = function(){
 	this.character.animation.add('fall',[11] , 0.1, true);
 
 	this.addChild(this.character);	
+
+	//เสียงเพลงของเกม
+	this.bgmusic = new Kiwi.Sound.Audio(this.game, 'sci-fi-theme-8-bit', 1, true);
+	this.bgmusic.play();
+
+	this.jumpse = new Kiwi.Sound.Audio(this.game, 'jump-se', 1, false);
 }
 
 //update คือ ฟังก์ชันสำหรับ Listening ตัวเกม เวลามีการเปลี่ยนแปลงไดๆ
@@ -122,6 +131,8 @@ gameState.updateCharacterMovement = function () {
 	
 	if (this.jumpPressed && this.character.physics.isTouching( Kiwi.Components.ArcadePhysics.DOWN ) ){
 		this.character.physics.velocity.y = -160;
+		this.jumpse.stop();
+		this.jumpse.play();
 	}
     
 	//Setting กึ่งกลางตัวละคร
