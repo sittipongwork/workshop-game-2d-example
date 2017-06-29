@@ -1,0 +1,12 @@
+{ "columns":35,
+ "image":"starmap1.png",
+ "imageheight":1440,
+ "imagewidth":1680,
+ "margin":0,
+ "name":"starmap1",
+ "spacing":0,
+ "tilecount":1050,
+ "tileheight":48,
+ "tilewidth":48,
+ "type":"tileset"
+}
