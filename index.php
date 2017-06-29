@@ -61,14 +61,18 @@ body,html{
 <script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/ai-tree-1.0.0.min.js"></script>
 <script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/primitives-1.0.2.min.js"></script>
 */?>
-<script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/GameState.js"></script>
+<script type="text/javascript" src="<?php echo BaseURL;?>/client/GameState.js"></script>
 
-<!-- Main Script -->
+<!-- Main Game Script -->
 <script type="text/javascript" defer>
-	
+	//ตั้งค่าหน้าต่างของตัวเกม.
+	var gameOptions = {
+		width: 1024,
+		height: 600
+	};
     //Kiwi.Log.display = false ปิดการ show log
 	var game = new Kiwi.Game('GameWrapper', 'GameExample', null, gameOptions);
-    game.states.addState( loadingState );
+    game.states.addState( gameState );
     game.states.switchState( "GameState" );
 </script>
 </body>
