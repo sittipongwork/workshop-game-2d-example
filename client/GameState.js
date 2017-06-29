@@ -32,7 +32,7 @@ gameState.create = function(){
 	//สร้าง Character 
 	this.character = new Kiwi.GameObjects.Sprite(this, this.textures.character, 70, 50);
 	//สร้างค่า Physic ของตัวละคร | บอกตำแหน่งการยืนและการขนกันกับฉาก
-	this.character.box.hitbox = new Kiwi.Geom.Rectangle(35, 0, 25, 20 ); 
+	this.character.box.hitbox = new Kiwi.Geom.Rectangle(24, 20, 0, 0 ); 
 	this.character.physics = this.character.components.add( new Kiwi.Components.ArcadePhysics( this.character, this.character.box ) );
 	//กำหนดตัวแปรทางฟิสิก การเร่งความเร็วสูงสุด และ ความเร็วสูงสุด
 	this.character.physics.acceleration.y = 80;
@@ -51,11 +51,5 @@ gameState.update = function(){
 	this.bgstate.cellOffsetX += 0.5;
 
 	//เรียกใช้งานฟังก์ชันตัวละครกับแผนที่ชนกัน
-	this.checkCharacterOnBlockTileMap();
-}
-
-//ตรวจสอบว่าตัวละครชนกับแผนที่หรือยัง
-gameState.checkCharacterOnBlockTileMap = function () {
-	//กำหนดให้แผนที่กับตัวละครต้องไม่ทะลุจากกัน
 	this.tilemap.layers[0].physics.overlapsTiles( this.character, true );
 }
