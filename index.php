@@ -55,9 +55,10 @@ body,html{
 
 <!-- Loading Script -->
 <script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/kiwi.min.js"></script>
+
+<script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/repeating-texture-1.0.0.js"></script>
 <?php /*
 <script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/Inventory-1.0.0.min.js"></script>
-<script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/repeating-texture-1.0.0.js"></script>
 <script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/ai-tree-1.0.0.min.js"></script>
 <script type="text/javascript" src="<?php echo BaseURL;?>/client/assets/js/lib/kiwi-js/primitives-1.0.2.min.js"></script>
 */?>
