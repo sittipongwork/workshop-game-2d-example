@@ -76,6 +76,22 @@ gameState.create = function(){
 	this.GameTime.style.fontSize = '30px';
     this.game.huds.defaultHUD.addWidget( this.GameTime );
     this.GameTime.start()
+
+
+	
+	this.scoreBoard = new Kiwi.HUD.Widget.TextField( this.game, "Your Score: 0", 490, 230 );
+	this.scoreBoard.style.fontFamily = "helvetica";
+	this.scoreBoard.style.color = '#000';
+	//this.scoreBoard.input.onDown.add( this.PressedRestartClick, this );
+
+	this.RestartGameHud = new Kiwi.HUD.Widget.Button( this.game, 'เล่นไหม่อีกครั้ง !', 400, 200 );
+	this.RestartGameHud.style.color = '#000';
+    this.RestartGameHud.style.fontSize = '2em';
+    this.RestartGameHud.style.fontWeight = 'bold';
+    this.RestartGameHud.style.padding = '80px 50px 30px';
+    this.RestartGameHud.style.backgroundColor = '#fff';
+    this.RestartGameHud.style.cursor = 'pointer';
+
 }
 
 //update คือ ฟังก์ชันสำหรับ Listening ตัวเกม เวลามีการเปลี่ยนแปลงไดๆ
@@ -89,6 +105,8 @@ gameState.update = function(){
 	
 	this.updateCharacterMovement();
 	this.updateCharacterAnimation();
+	this.GameEnd();
+	this.resetCharacter();
 }
 
 //Event เมื่อมีการกดปุ่มไดๆ
@@ -166,4 +184,29 @@ gameState.updateCharacterAnimation = function () {
 		this.character.animation.play('idle', false);
 	}
 
+}
+
+gameState.GameEnd = function (){
+	if (this.character.x>2000.5){
+	this.GameTime.stop()
+
+    this.game.huds.defaultHUD.addWidget( this.RestartGameHud );
+
+	var ScoreLogic = 158000.00/parseFloat(this.GameTime.text);
+
+	this.scoreBoard.text = "Your Score: " + parseInt(ScoreLogic);
+	this.game.huds.defaultHUD.addWidget( this.scoreBoard );
+	}
+}
+
+gameState.PressedRestartClick = function() {
+	this.game.states.switchState( "GameState" );
+}
+
+gameState.resetCharacter = function() {
+	if( this.character.y > this.game.stage.height + this.game.stage.height / 2 ) {
+		this.character.y = 50;
+		this.character.x = 70;
+		this.character.physics.velocity.y = 0;
+	}
 }
